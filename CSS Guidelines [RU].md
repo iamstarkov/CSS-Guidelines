@@ -188,18 +188,17 @@
 
 Использование `!important` (reactively), например чтобы помочь выбраться себе из ситуации с запутанной специфичностью, не приветствуется (not advised). Переработайте ваш CSS и старайтесь избежать этих проблем рефакторингом ваших селекторов. Сохраняя ваши селекторы короткими и неиспользование ID сослужит вам хорошую службу.
 
+## Магические числа и абсолютные значения
 
-## Magic numbers and absolutes
+Магическое число — число используемое лишь потому, что «это просто работает». Это порочная практика так как очень редко она работает по какой-либо реальной причине и обычно достаточно недальновидна, негибка и причина самого числа вероятнее всего забудется. магические числа устраняют симптомы, но не никак не влиют на проблему.
 
-A magic number is a number which is used because ‘it just works’. These are bad because they rarely work for any real reason and are not usually very futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
+Например, использование правила `.dropdown-nav li:hover ul { top: 37px; }` для сдвига выпадающего пункта меню вниз при наведении на родителя `li` не принесёт ничего хорошего, так как 37px магическое число. 37px работает только потому, что в этом конретном сценарии (конкретный сайт в определённое время) меню оказалось высотой в 37px.
 
-For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only works here because in this particular scenario the `.dropdown-nav` happens to be 37px tall.
+Вместо этого мы должны использовать `.dropdown-nav li:hover ul { top: 100%; }`, что означает без разницы какой высоты будет `dropdown-nav` меню, выпадающий пункт меню всегда будет сдвинут на 100% от верхней границы родителя.
 
-Instead we should use `.dropdown-nav li:hover ul{ top:100%; }` which means no matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from the top.
+Каждый раз, когда вы жестко задаёте число подумайте дважды; если вы можете избежать этого, используя ключевые слова или синонимы (например, `top: 100%` — сдвинуть на 100% от верха) или — даже лучше — не используя никаких элементов измерений, то вы должны избежать использования жестко заданного числа.
 
-Every time you hard code a number think twice; if you can avoid it by using keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’) or&mdash;even better&mdash;no measurements at all then you probably should.
-
-Every hard-coded measurement you set is a commitment you might not necessarily want to keep.
+(Every hard-coded measurement you set is a commitment you might not necessarily want to keep.)
 
 
 ## Conditional stylesheets
