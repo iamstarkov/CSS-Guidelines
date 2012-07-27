@@ -106,28 +106,28 @@
 
 Сокращённая запись сама по себе хороша, но легко используется неправильно.
 
-## Selectors
+## Селекторы
 
-Keep selectors efficient and portable.
+Сохраняйте селекторы (efficient) и переносимыми.
 
-Heavily location-based selectors are bad for a number of reasons. For example, take `.sidebar h3 span{}`. This selector is too location-based and thus we cannot move that `span` outside of a `h3` outside of `.sidebar` and maintain styling.
+Тяжелые, основанные на расположении внутри DOM-дерева (location-based), селекторы никуда не годятся по ряду причин. Например возьмем `.sidebar h3 span{}`. Этот селектор основан на вложении (location-based) и поэтому мы не можем переместить тот `span` из `h3` и из `.sidebar` — не можем обеспечить поддержку стилей на должном уровне (maintain styling.).
 
-Selectors which are too long also introduce performance issues; the more checks in a selector (e.g. `.sidebar h3 span` has three checks, `.content ul p a` has four), the more work the browser has to do.
+Слишком длинные селекторы также вызывают проблемы производительности; чем больше проверок в селекторе (например селекторе `.sidebar h3 span` имеет три проверки, а `.content ul p a` — четыре), тем больше работы должен выполнять браузер.
 
-Make sure styles aren’t dependent on location where possible, and make sure selectors are nice and short.
+Старайтесь следить, чтобы ваши стили не зависели от вложенности, где это возможно (Make sure styles aren’t dependent on location where possible), а также что ваши селекторы короткие и легко воспринимаемые.
 
-**Remember:** classes are neither semantic or insemantic; they are sensible or insensible! Stop stressing about ‘semantic’ class names and pick something sensible and futureproof.
+**Запомните:** Классы на самом деле ни семантичны, ни не семантичны; Они применимы или нет! Перестаньте беспокоиться о «семантике» имён классов и выберите что-нибудь удобное в применении, с расчётом на дальнейшее использование.
 
-**Read:**
+**К прочтению:**
 
 * [speakerdeck.com/&hellip;/breaking-good-habits](http://speakerdeck.com/u/csswizardry/p/breaking-good-habits)
 * [csswizardry.com/&hellip;/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
-### Over-qualified selectors
+### Слишком специфичные селекторы
 
-An over-qualified selector is one like `div.promo`. We could probably get the same effect from just using `.promo`. Of course sometimes we will _want_ to qualify a class with an element (e.g. if you have a generic `.error` class that needs to look different when applied to different elements (e.g. `.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it where possible.
+Гиперспецифичный селектор это один из ряда `div.promo`. Скорее всего мы можем достичь тот же самый эффект используя лишь `.promo`. Конечно, иногда мы *хотим* определить класс в зависимости от элемента (например, если у вас есть общий класс `.error`, который должен выглядеть по разному на разных элементах (например, `.error{ color: red; }` `div.error{ padding: 14px; }`)), но по возможности избегайте этого, где это только возможно.
 
-Another example of an over-qualified selector might be `ul.nav li a{}`. As above, we can instantly drop the `ul` and because we know `.nav` is a list, we therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}` down to just `.nav a{}`.
+Другим примером слишком специфичного селектора может быть `ul.nav li a{}`. Как описано выше мы сразу можем выкинуть `ul`, и так как мы знаем, что `.nav` это список, то ссылка будет вложена только в `li`, поэтому мы можем сократить `ul.nav li a {}` до `.nav a`.
 
 ### Performance
 
