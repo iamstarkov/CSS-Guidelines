@@ -170,13 +170,14 @@
 
 **Пишите селекторы, указывающие на желаемые элементы,(Write selectors that target what you want, not what happens to be there already.) **
 
-## IDs and classes
+## Идентификаторы (ID) и классы
 
-Do not use IDs in CSS **at all**. They can be used in your markup for JS and fragment-identifiers but use only classes for styling. We don’t want to see a single ID in this (or any other) stylesheet.
+Никогда не используйте ID в CSS, **абсолютно никогда**. Они могут быть использованы в вашей разметке, только для джаваскрипта или обозначения секций документа (fragment-identifiers). Для стилизации используйте только классы. Мы не хотим увидеть хоть один ID в этой или любой другой таблице стилей.
 
-Classes come with the benefit of being reusable (even if we don’t want to, we can) and they have a nice, low specificity.
+Классы предоставляют возможность повторного использования (даже если мы не хотим, но всё равно мы можем) и имеют прелестную низкую специфичность.
 
-**Read:**
+
+**К прочтению:**
 
 * [csswizardry.com/&hellip;/when-using-ids-can-be-a-pain-in-the-class](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class)
 
