@@ -201,12 +201,11 @@
 (Every hard-coded measurement you set is a commitment you might not necessarily want to keep.)
 
 
-## Conditional stylesheets
+## (Conditional stylesheets)
 
-IE stylesheets can, by and large, be totally avoided. The only time an IE stylesheet may be required is to circumvent blatant lack of support (e.g. PNG fixes).
+Использование файлов стилей (by and large) для IE должно избегаться. Исключением может быть необходимость восполнить(required is to circumvent blatant lack of support) недостаточную поддержку (например, PNG с альфа–каналом в IE6)
 
-As a general rule, all layout and box-model rules can and _will_ work without an IE stylesheet if you refactor and rework your CSS. This means we never want to see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such CSS that is clearly using arbitrary styling to just ‘make stuff work’.
-
+Главное правило: вся разметка и `box-model` правила могут и *будут* работать без дополнительных файлов стилей, если вы отрефакторите и переделаете вашу таблицу стилей. Это означает, что мы никогда не будем рады, если увидим `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` или любой подобный CSS, используемый лишь для того, чтобы «заставить что-то работать правильно»(make stuff work).
 
 ## Debugging
 
