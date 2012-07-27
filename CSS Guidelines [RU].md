@@ -74,24 +74,24 @@
 
 Вы никогда не должны применять никаких стилей на ячейку сетки, так как они служат только целям разметки. (Never, under any circumstances, apply box-model properties to a grid item.)
 
-## Sizing
+## Размеры
 
-We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems and nothing at all.
+Мы используем различные методы для задания размеров интерфейса. Проценты, пиксели, `ems`, `rems` и (nothing at all.)
 
-**Read:**
+**К прочтению:**
 
 * [csswizardry.com/&hellip;/measuring-and-sizing-uis-2011-style](http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style)
 
 
-## Font sizing
+## Размеры текста
 
-We use rems (with a pixel fallback for older browsers only). We do not want to define any font sizes in pixels as standard. We define line heights unitlessly everywhere **unless** we are trying to align text to known heights.
+Мы используем `rems` (c запасным решением с помошью пикселей только для старых браузеров). Мы категорически не хотим определять размеры текста в пикселях как это делают обычно. Мы определяем `line-height` без определения размерностей везде, **кроме** тех случаев когда позиционируем текст в заранее известной высоте.
 
-We want to avoid defining font sizes over and over; to achieve this we have a predefined scale of font sizes tethered to classes. We can recycle these rather than having to declare styles over and over.
+Мы избегаем многоразового определения `font-size`; для достижения той же цели мы используем предопределённый размер шрифтов разбитые по классым (to achieve this we have a predefined scale of font sizes tethered to classes). Мы можем переделать их вместо определения `font-size` снова и снова.
 
-Before writing another font-size declaration, see if a class for it already exists.
+Перед тем как задать элементу `font-size`, убедитесь что класс с заданным значеним ещё не существует.
 
-**Read:**
+**К прочтению:**
 
 * [csswizardry.com/&hellip;/pragmatic-practical-font-sizing-in-css](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
