@@ -96,16 +96,15 @@
 * [csswizardry.com/&hellip;/pragmatic-practical-font-sizing-in-css](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
 
-## Shorthand
+## Сокращённая запись
 
-It might be tempting to use declarations like `background:red;` but in doing so what we are actually saying is ‘I want no image to scroll, aligned top left and repeating X and Y and a background colour of red’. Nine times out of ten this won’t cause any issues but that one time it does is annoying enough to warrant not using such shorthand. Instead use `background-color:red;`.
+Это может показаться (tempting) использовать правила похожие на `background: red;` но делая это, мы на самом деле говорим: «Я хочу, чтобы фоном была не одна картинка скролящуюся, спозиционированную вверх и влево и повторяющуюся по X и Y и чтобы цвет фона был красный». В девяти случаях из десяти это не высовет никаких проблем, но в 10% обязательно доставит достаточно неприятностей, чтобы не использовать сокращенные записи. Вместо этого используйте `background-color: red;`.
 
-Similarly, declarations like `margin:0;` are nice and short, but **be explicit**. If you’re actually only really wanting to affect the margin on the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
+Например, ситуация с правилом `margin: 0;` — оно ясное и короткое, но черезчур (**be explicit**). Если вы на самом деле хотите сделать отступ снизу от элемента, то гораздо лучше (appropriate) использовать `margin-bottom: 0;`.
 
-Be explicit in which properties you set and take care to not inadvertently unset others with shorthand. E.g. if you only want to remove the bottom margin on an element then there is no sense in blitzing all margins with `margin:0;`.
+Будьте (explicit) в свойствах которые вы устанавливаете и следите за тем, чтобы (inadvertently) не сбросить свойства других элементов используя сокращенную запись. Например, если вы хотите сбросить нижний отступ, то нет никакой необходимости в сбрасывании (blitzing) всех отступов с помощью `margin: 0;`.
 
-Shorthand is good, but easily misused.
-
+Сокращённая запись сама по себе хороша, но легко используется неправильно.
 
 ## Selectors
 
