@@ -1,4 +1,4 @@
-# General CSS notes, advice and guidelines
+# Общие CSS замечания, советы и рекомендации
 
 ## CSS файлы
 
@@ -64,16 +64,15 @@
 * [stubbornella.org/&hellip;/the-media-object-saves-hundreds-of-lines-of-code](http://stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code)
 
 
-## Layout
+## Раскладка
 
-All components should be left totally free of widths; your components should always remain fluid and their widths should be governed by a grid system.
+Все компоненты должны быть полностью независимы от ширины; ваши компоненты должны оставаться резиновыми(fluid) и их ширина должна контролироваться сеточной системой (grid system)
 
-Heights should **never** be be applied to elements. Heights should only be applied to things which had dimensions _before_ they entered the site (i.e. images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything. You can normally achieve the desired effect with line-heights which are far more flexible.
+Высота **никогда** не должна назначаться элементам. Высота применяется только на сущности, имевшие размеры *до того*, как попали на сайт (например, картинки и спрайты). Никогда не устанавливайте высоту на `p`, `ul`, `div`, что угодно. Вы можете добить желаемого эффекта с помощью гораздо более гибкого `line-height`.
 
-Grid systems should be thought of as shelves. They contain content but are not content in themselves. You put up your shelves then fill them with your stuff.
+(Grid systems should be thought of as shelves.) Они содержат контент, но не являются им самим. (You put up your shelves then fill them with your stuff.)
 
-You should never apply any styles to a grid item, they are for layout purposes only. Never, under any circumstances, apply box-model properties to a grid item.
-
+Вы никогда не должны применять никаких стилей на ячейку сетки, так как они служат только целям разметки. (Never, under any circumstances, apply box-model properties to a grid item.)
 
 ## Sizing
 
