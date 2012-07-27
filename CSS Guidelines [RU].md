@@ -216,11 +216,11 @@
 Это бывает достаточно удобно (It can be tempting) добавить `overflow:hidden;` на нужный элемент, чтобы избавиться от результатов кривой вёрстки, но `overflow` (was probably never the problem); **Исправляйте проблему, а не симптомы.**
 
 
-## Preprocessors
+## Препроцессоры
 
-By following the above advice you should typically find the need for a preprocessor decreases dramatically. If you still wish to use a preprocessor then by all means do so, but only as en extension of the above, not an alternative.
+Следуя предыдущим советам, вы возможно обнаружите улетучивающуюся потребность в препроцессорах. Если вы всё ещё хотите их использовать, то учитывая всё, что было написано, используйте препроцессоры как дополнение к правилам, а не как альтернативу им.
 
-For example, preprocessors’ nesting abilities often lead to overly specific and location dependent selectors. Let’s use our `. nav a{}` example again:
+Например, возможность вложенности часто приводит (preprocessors’ nesting abilities ) к гипер специфичным и зависящим от DOM селекторам. Давайте рассмотрим наш `. nav a{}` пример ещё раз:
 
     .nav{
         li{
@@ -228,15 +228,15 @@ For example, preprocessors’ nesting abilities often lead to overly specific an
         }
     }
 
-Will compile to:
+Скомпилируется в:
 
 
     .nav {}
     .nav li {}
     .nav li a {}
 
-Whilst this is a very timid example, it does help illustrate how a lot of preprocessors’ built in ‘helpful’ aspects actually go against our ideals; `.nav li a{}` could (and should) just be `.nav a{}`.
+(Whilst this is a very timid example), он демонстрирует, что множество встроенных «полезных» фич препроцессоров работают против наших идеалов; `.nav li a{}` можеты (и должно) быть `.nav a{}`.
 
-Also, with mixins and the like, preprocessors teach you how to recognise abstractions&mdash;which is great&mdash;but not necessarily how to use them properly; there’s no point writing an abstracted mixin when you proceed to repeat it a dozen times in a stylesheet.
+Также, миксины и похожие них элементы, учат вас запоминать абстракции — что великолепно — но не необходимо как испольвать правильно (but not necessarily how to use them properly); нет никакой необходимости в абстактном миксине, если вы собираетесь использовать его тысячу раз в файле стилей.
 
 Be sure to know the ins-and-outs of excellent vanilla CSS and where a preprocessor can _aid_ that, not hinder or undo it. Learn the downsides of preprocessors inside-out and then fuse the best aspects of the two with the bad bits of neither.
