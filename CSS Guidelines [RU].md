@@ -207,13 +207,13 @@
 
 Главное правило: вся разметка и `box-model` правила могут и *будут* работать без дополнительных файлов стилей, если вы отрефакторите и переделаете вашу таблицу стилей. Это означает, что мы никогда не будем рады, если увидим `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` или любой подобный CSS, используемый лишь для того, чтобы «заставить что-то работать правильно»(make stuff work).
 
-## Debugging
+## Отладка
 
-If you run into a CSS problem **take code away before you start adding more** in a bid to fix it. The problem exists in CSS that is already written, more CSS isn’t the right answer!
+Если вы столкнулись с проблемой в CSS, то **удаляйте куски кода, до того как начать добавлять правила ещё** в попытке решить проблему. Проблема кроется в уже написанном CSS, написать ещё больше стилей не самое верное решение!
 
-Delete chunks of markup and CSS until your problem goes away, then you can determine which part of the code the problem lies in.
+Удаляйте куски разметки и стилей, пока проблема не исчезнет, затем определите в какуя часть кода закралась проблема.
 
-It can be tempting to put an `overflow:hidden;` on something to hide the effects of a layout quirk, but overflow was probably never the problem; **fix the problem, not its symptoms.**
+Это бывает достаточно удобно (It can be tempting) добавить `overflow:hidden;` на нужный элемент, чтобы избавиться от результатов кривой вёрстки, но `overflow` (was probably never the problem); **Исправляйте проблему, а не симптомы.**
 
 
 ## Preprocessors
