@@ -147,13 +147,13 @@
 
 Будьте точны, конкретны; указывайте именно тот элемент, который вам нужен, не его родитель. Никогда не предполагайте, что разметка не будет меняться.
 
-### Key selectors should (typically) never be a type selector or an object/abstraction class
+### Ключевой селектор никогда (обычно) не должен быть селектором тега или основным классом компонента/абстракции (Key selectors should (typically) never be a type selector or an object/abstraction class)
 
-You should never find yourself writing selectors whose key selector is a type selector (e.g. `.header ul{}`) or a base object (e.g. `.header .nav{}`). This is because you can never guarantee that there will only ever be one `ul` or `.nav` in that `.header`, the key selector is too loose—too broad.
+Вы никогда не должны обнаружить себя пишущим (You should never find yourself writing) селектор, в котором ключевое значение имеет селектор по тегу (например, `.header ul {}`) или базовый компонент (например, `.header .nav {}`). Так как вы никогда не сможете гарантировать, что будет только один `ul` или один `.nav` в контейнере `.header`, ключевой селектор (selector is too loose—too broad).
 
-It would be more appropriate to give the element in question an explicit class targeting that one and that one only, so `.header .nav{}` would be replaced with `.site-nav`, for example.
+Будет правильнее задать элементу класс, отвечающий на вопрос, что это за элемент и указывающий на него и только на него (It would be more appropriate to give the element in question an explicit class targeting that one and that one only), итак `.header .nav {}` может быть заменено на `.site-nav`, например.
 
-The only time where a type selector may be appropriate is if you have a situation like this:
+Единственное, когда селектор по тегу может быть востребован, это когда у вас ситуация похожа на ту, что описана ниже: (The only time where a type selector may be appropriate is if you have a situation like this:)
 
     a{
         color:red;
@@ -166,10 +166,9 @@ The only time where a type selector may be appropriate is if you have a situatio
             color:white;
         }
 
-In this case you _know_ that every `a` in `.promo` needs a blanket rule because it would be unreadable without.
+В данном случае вы *знаете*, что каждый `a` в `.promo` нуждается в пустом правиле, так как в противном случае будет нечитабельным.
 
-**Write selectors that target what you want, not what happens to be there already.**
-
+**Пишите селекторы, указывающие на желаемые элементы,(Write selectors that target what you want, not what happens to be there already.) **
 
 ## IDs and classes
 
