@@ -137,16 +137,15 @@
 
 * [csswizardry.com/…/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
+## Будьте точны, не делайте обобщений и предположений (assumptions)
 
-## Be explicit, don’t make assumptions
+Вместо использования селекторов спускающихся по всему DOM-дереву(Instead of using selectors to drill down the DOM to an element), чаще удобнее добавить класс элементу, для которого вы хотите написать стили. Давайте рассмотрим конкретный пример.
 
-Instead of using selectors to drill down the DOM to an element, it is often best to put a class on the element you explicitly want to style. Let’s take a specific example.
+Представьте себе промо баннер с классом `.promo` с текстом внутри и ссылкой призывающей к действию. Если будет только один `a` во всем `.promo` то можно стилизовать «призывную» ссылку с помощью `.promo a {}`.
 
-Imagine you have a promotional banner with a class of `.promo` and in there there is some text and call-to-action link. If there is just one `a` in the whole of `.promo` then it may be tempting to style that call-to-action via `.promo a{}`.
+Проблема станет очевидно так скоро, как вы добавите простую текстовую ссылку (или любую другую ссылку) в `.promo` контейнер; только что добавленная ссылка унаследует стили от «призывной» ссылки в независимости от того, хотите вы этого или нет. В этой ситуации будет лучше добавить точный класс (например `.cta` — abbr. from call-to-action) ссылке, которую вы хотите стилизовать.
 
-The problem here should be obvious in that as soon as you add a simple text link (or any other link for that matter) to the `.promo` container it will inherit the call-to-action styling, whether you want it to or not. In this case you would be best to explicitly add a class (e.g. `.cta`) to the link you want to affect.
-
-Be explicit; target the element you want to affect, not its parent. Never assume that markup won’t change.
+Будьте точны, конкретны; указывайте именно тот элемент, который вам нужен, не его родитель. Никогда не предполагайте, что разметка не будет меняться.
 
 ### Key selectors should (typically) never be a type selector or an object/abstraction class
 
