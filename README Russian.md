@@ -11,48 +11,48 @@
 
 Первая часть этого документа расскажет про синтаксис, форматирование и анатомию CSS, вторая часть раскроет темы метода, способа мышления и отношения к написанию и созданию CSS архитектуры. Звучит, многообещающе?
 
-## Contents
+## Оглавление
 
-* [CSS document anatomy](#css-document-anatomy)
-  * [General](#general)
-  * [One file vs. many files](#one-file-vs-many-files)
-  * [Table of contents](#table-of-contents)
-  * [Section titles](#section-titles)
-* [Source order](#source-order)
-* [Anatomy of rulesets](#anatomy-of-rulesets)
-* [Naming conventions](#naming-conventions)
-  * [JS hooks](#js-hooks)
-* [Comments](#comments)
-  * [Comments on steroids](#comments-on-steroids)
-    * [Quasi-qualified selectors](#quasi-qualified-selectors)
-    * [Tagging code](#tagging-code)
-    * [Object/extension pointers](#objectextension-pointers)
-* [Writing CSS](#writing-css)
-* [Building new components](#building-new-components)
+* [Анатомия CSS документа](#анатомия-css-документа)
+  * [Общие моменты](#общие-моменты)
+  * [Один файл vs. много файлов](#один-файл-vs-много-файлов)
+  * [Оглавление](#оглавление)
+  * [Названия секций](#section-titles)
+* [Порядок стилей](#порядок-стилей)
+* [Анатомия CSS правила](#анатомия-css-правила)
+* [Соглашения об именовании](#соглашения-об-именовании)
+  * [Джаваскрипт классы](#джаваскрипт-классы)
+* [Комментарии](#комментарии)
+  * [Комментарии на стероидах](#комментарии-на-стероидах)
+    * [Смешанные селекторы](#quasi-qualified-selectors)
+    * [Теги в коде](#теги-в-коде)
+    * [Ссылка на расширяемый компонент](#cсылка-на-расширяемый-компонент)
+* [Напиcание CSS](#напиcание-css)
+* [Создание новых компонентов](#создание-новых-компонентов)
 * [OOCSS](#oocss)
-* [Layout](#layout)
-* [Sizing UIs](#sizing-uis)
-  * [Font sizing](#font-sizing)
-* [Shorthand](#shorthand)
-* [IDs](#ids)
-* [Selectors](#selectors)
-  * [Over qualified selectors](#over-qualified-selectors)
-  * [Selector performance](#selector-performance)
-* [CSS selector intent](#css-selector-intent)
+* [Разметка](#layout)
+* [Единицы измерения](#единицы-измерения)
+  * [Типографские единицы измерения](#font-sizing)
+* [Сокращенная запись](#сокращенная-запись)
+* [Идентификаторы](#идентификаторы)
+* [Селекторы](#селекторы)
+  * [Перенасыщеный селекторы](#перенасыщеный-селекторы)
+  * [Производительность селекторов](#производительность-селекторов)
+* [Ключевой элемент селектора](#ключевой-элемент-селектора)
 * [`!important`](#important)
-* [Magic numbers and absolutes](#magic-numbers-and-absolutes)
+* [Магические числа и абсолютные значения](#магические-числа-и-абсолютные значения)
 * [Conditional stylesheets](#conditional-stylesheets)
-* [Debugging](#debugging)
-* [Preprocessors](#preprocessors)
+* [Отладка](#отладка)
+* [Препроцессоры](#Препроцессор)
 
 ---
 
-## CSS Document Anatomy
+## Анатомия CSS документа
 
 No matter the document, we must always try and keep a common formatting. This
 means consistent commenting, consistent syntax and consistent naming.
 
-### General
+### Общие моменты
 
 Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
@@ -60,7 +60,7 @@ nothing we can do about that.
 
 I prefer four (4) space indents over tabs and we write multi-line CSS.
 
-### One file vs. many files
+### Один файл vs. много файлов
 
 Some people prefer to work with single, large files. This is fine, and by
 sticking to the following guidelines you’ll encounter no problems. Since moving
@@ -69,7 +69,7 @@ This too is fine… Whichever method you choose, the following rules and
 guidelines apply. The only notable difference is with regards our table of
 contents and our section titles. Read on for further explanation…
 
-### Table of contents
+### Оглавление
 
 At the top of stylesheets, I maintain a table of contents which will detail the
 sections contained in the document, for example:
@@ -126,7 +126,7 @@ through larger files.
 If you are working across multiple, included stylesheets, start each of those
 files with a section title and there is no need for any carriage returns.
 
-## Source order
+## Порядок стилей
 
 Try and write stylesheets in specificity order. This ensures that you take full
 advantage of inheritance and CSS’ first <i>C</i>; the cascade.
@@ -147,7 +147,7 @@ styles, less specificity problems and all-round better architected stylesheets.
 For further reading I cannot recommend Jonathan Snook’s
 [SMACSS](http://smacss.com) highly enough.
 
-## Anatomy of rulesets
+## Анатомия CSS правила
 
     [selector]{
         [property]:[value];
@@ -214,7 +214,7 @@ In this example (from [inuit.css’s table grid system](
 https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
 it makes more sense to single-line our CSS.
 
-## Naming conventions
+## Соглашения об именовании
 
 For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
 `.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
@@ -269,7 +269,7 @@ to allow for greater reuse. Extensions of objects should be much more explicitly
 named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
 classes; gzip will compress well written code _incredibly_ well.
 
-### Classes in HTML
+### Классы в HTML
 
 In a bid to make things easier to read, separate classes is your HTML with two
 (2) spaces, thus:
@@ -279,7 +279,7 @@ In a bid to make things easier to read, separate classes is your HTML with two
 This increased whitespace should hopefully allow for easier spotting and reading
 of multiple classes.
 
-### JS hooks
+### Джаваскрипт классы
 
 **Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
 to a styling class means that we can never have one without the other.
@@ -296,7 +296,7 @@ The above markup holds two classes; one to which you can attach some styling for
 sortable table columns and another which allows you to add the sorting
 functionality.
 
-## Comments
+## Комментарии
 
 I use a docBlock-esque commenting style which I limit to 80 lines in length:
 
@@ -320,7 +320,7 @@ You should document and comment our code as much as you possibly can, what may
 seem or feel transparent and self explanatory to you may not be to another dev.
 Write a chunk of code then write about it.
 
-### Comments on steroids
+### Комментарии на стероидах
 
 There are a number of more advanced techniques you can employ with regards
 comments, namely:
@@ -329,7 +329,7 @@ comments, namely:
 * Tagging code
 * Object/extension pointers
 
-#### Quasi-qualified selectors
+#### Смешанные селекторы
 
 You should never qualify your selectors; that is to say, we should never write
 `ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
@@ -360,7 +360,7 @@ Other examples might be:
 Here we can see where we intend each of these classes to be applied without
 actually ever impacting the specificity of the selectors.
 
-#### Tagging code
+#### Теги в коде
 
 If you write a new component then leave some tags pertaining to its function in
 a comment above it, for example:
@@ -379,7 +379,7 @@ These tags allow other developers to find snippets of code by searching for
 function; if a developer needs to work with lists they can run a find for
 `^lists` and find the `.nav` and `.matrix` objects (and possibly more).
 
-#### Object/extension pointers
+#### Ссылка на расширяемый компонент
 
 When working in an object oriented manner you will often have two chunks of CSS
 (one being the skeleton (the object) and the other being the skin (the
@@ -407,13 +407,13 @@ pieces of code.
 
 ---
 
-## Writing CSS
+## Напиcание CSS
 
 The previous section dealt with how we structure and form our CSS; they were
 very quantifiable rules. The next section is a little more theoretical and deals
 with our attitude and approach.
 
-## Building new components
+## Создание новых компонентов
 
 When building a new component write markup **before** CSS. This means you can
 visually see which CSS properties are naturally inherited and thus avoid
@@ -452,7 +452,7 @@ structure of the component using very generic classes so that we can reuse that
 construct and then use more specific classes to skin it up and add design
 treatments.
 
-## Layout
+## Разметка
 
 All components you build should be left totally free of widths; they should
 always remain fluid and their widths should be governed by a parent/grid system.
@@ -473,7 +473,7 @@ You should never apply any styles to a grid item, they are for layout purposes
 only. Apply styling to content _inside_ a grid item. Never, under _any_
 circumstances, apply box-model properties to a grid item.
 
-## Sizing UIs
+## Единицы измерения
 
 I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
 and nothing at all.
@@ -496,14 +496,14 @@ I only use pixels for items whose dimensions were defined before the came into
 the site. This includes things like images and sprites whose dimensions are
 inherently set absolutely in pixels.
 
-### Font sizing
+### Типографские единицы измерения
 
 I define a series of classes akin to a grid system for sizing fonts. These
 classes can be used to style type in a double stranded heading hierarchy. For a
 full explanation of how this works please refer to my article
 [Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
-## Shorthand
+## Cокращенная запись
 
 **Shorthand CSS needs to be used with caution.**
 
@@ -523,7 +523,7 @@ element then there is no sense in setting all margins to zero with `margin:0;`.
 
 Shorthand is good, but easily misused.
 
-## IDs
+## Идентификаторы
 
 A quick note on IDs in CSS before we dive into selectors in general.
 
@@ -538,7 +538,7 @@ ways to run into difficulties in projects and keeping it low at all times is
 imperative. An ID is **255** times more specific than a class, so never ever use
 them in CSS _ever_.
 
-## Selectors
+## Cелекторы
 
 Keep selectors short, efficient and portable.
 
@@ -562,7 +562,7 @@ is far nicer than `.usr-avt`.
 insensible! Stop stressing about ‘semantic’ class names and pick something
 sensible and futureproof.
 
-### Over-qualified selectors
+### Перенасыщеные селекторы
 
 As discussed above, qualified selectors are bad news.
 
@@ -578,14 +578,14 @@ above, we can instantly drop the `ul` and because we know `.nav` is a list, we
 therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}`
 down to just `.nav a{}`.
 
-### Selector performance
+### Производительность селекторов
 
 Whilst it is true that browsers will only ever keep getting faster at rendering
 CSS, efficiency is something you could do to keep an eye on. Short, unnested
 selectors, not using the universal (`*{}`) selector as the key selector, and
 avoiding more complex CSS3 selectors should help circumvent these problems.
 
-## CSS selector intent
+## Ключевой элемент селектора
 
 Instead of using selectors to drill down the DOM to an element, it is often best
 to put a class on the element you explicitly want to style. Let’s take a
@@ -627,7 +627,7 @@ situations, is not advised. Rework your CSS and try to combat these issues by
 refactoring your selectors. Keeping your selectors short and avoiding IDs will
 help out here massively.
 
-## Magic numbers and absolutes
+## Магические числа и абсолютные значения
 
 A magic number is a number which is used because ‘it just works’. These are bad
 because they rarely work for any real reason and are not usually very
@@ -660,7 +660,7 @@ IE stylesheet if you refactor and rework your CSS. This means you never want to
 see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
 CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
-## Debugging
+## Отладка
 
 If you run into a CSS problem **take code away before you start adding more** in
 a bid to fix it. The problem exists in CSS that is already written, more CSS
@@ -673,7 +673,7 @@ It can be tempting to put an `overflow:hidden;` on something to hide the effects
 of a layout quirk, but overflow was probably never the problem; **fix the
 problem, not its symptoms.**
 
-## Preprocessors
+## Препроцессоры
 
 Sass is my preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
 more powerful but avoid nesting like the plague! Nest only when it would
