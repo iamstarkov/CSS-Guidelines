@@ -136,7 +136,7 @@ For further reading I cannot recommend Jonathan Snook’s
 
 Я руководствуюсь несколькими правилами при написании правила.
 
-* Тире как разделитель (Исключая БЭМ нотацию,
+* Дефис как разделитель (Исключая БЭМ запись,
   [смотрите ниже](#cоглашения-об-именовании))
 * Отступ в 4 пробела
 * Многострочность
@@ -190,26 +190,21 @@ For further reading I cannot recommend Jonathan Snook’s
 
 ## Соглашения об именовании
 
-For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
-`.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
-Element, Modifier) notation.
+В большинстве случаев я использую дефис как разделитель слов в классах (например `.foo-bar`, не `.foo_bar` и не `.fooBar`), но в некоторых случаях я использую БЭМ запись.
 
-<abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
-and classifying CSS selectors in a way to make them a lot more strict,
-transparent and informative.
+<abbr title="Блок, Элемент, Модификатор">БЭМ</abbr> — Методология именования и категоризации CSS селекторов для приведения их в чёткий порядок, придания прозрачности и информативности.
 
-The naming convention follows this pattern:
+Соглашение об именовании выражается следующим шаблоном:
 
     .block{}
     .block__element{}
     .block--modifier{}
 
-* `.block` represents the higher level of an abstraction or component.
-* `.block__element` represents a descendent of `.block` that helps form `.block`
-  as a whole.
-* `.block--modifier` represents a different state or version of `.block`.
+* `.block` представляет собой наивысший уровень абстракции или компонента.
+* `.block__element` является вложенным элементом `.block` формирующим `.block` как сущность.
+* `.block--modifier` — класс отражающий другое состояние или версию `.block`.
 
-An **analogy** of how BEM classes work might be:
+**Аналогия** иллюстрирующая работу БЭМ может быть такой:
 
     .person{}
     .person--woman{}
@@ -217,58 +212,34 @@ An **analogy** of how BEM classes work might be:
         .person__hand--left{}
         .person__hand--right{}
 
-Here we can see that the basic object we’re describing is a person, and that a
-different type of person might be a woman. We can also see that people have
-hands; these are sub-parts of people, and there are different variations,
-like left and right.
+В этом примере приведен базовый объект описывающий человека, и существует отличный от базового тип человека — женщина. Также наглядно видно, что у людей есть руки; они являются частями человека, и рука может быть как левой, так и правой.
 
-We can now namespace our selectors based on their base objects and we can also
-communicate what job the selector does; is it a sub-component (`__`) or a
-variation (`--`)?
+Теперь мы можем создавать селекторы опираясь на базовые объекты и также без проблем понимаем, что делает каждый конкретный селектор; является ли он частью компонента (`__`) или же модификацией (`--`)?
 
-So, `.page-wrapper` is a standalone selector; it doesn’t form part of an
-abstraction or a component and as such it named correctly. `.widget-heading`,
-however, _is_ related to a component; it is a child of the `.widget` construct
-so we would rename this class `.widget__heading`.
+Итак, `.page-wrapper` является отдельным селектором; он не формирует часть компонента и значит является валидным селектором. В противовес этому, селектор `.widget-heading` относится к компоненту; он является дочерним элементом `.widget` и поэтому мы вынуждены переименовать этот класс в `.widget__heading`.
 
-BEM looks a little uglier, and is a lot more verbose, but it grants us a lot of
-power in that we can glean the functions and relationships of elements from
-their classes alone. Also, BEM syntax will typically compress (gzip) very well
-as compression favours/works well with repetition.
+БЭМ непригляднее и перегружен, но тем не менее он предоставляет огромные возможности, с помощью которых мы можем определить назначение и отношения элементов просто посмотрев на их классы. Также, БЭМ обычно сжимается c помощью gzip, после использования минификаторов, которые первоклассно работают с повторениями.
 
-Regardless of whether you need to use BEM or not, always ensure classes are
-sensibly named; keep them as short as possible but as long as necessary. Ensure
-any objects or abstractions are very vaguely named (e.g. `.ui-list`, `.media`)
-to allow for greater reuse. Extensions of objects should be much more explicitly
-named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
-classes; gzip will compress well written code _incredibly_ well.
+Используете ли вы БЭМ или нет, всегда проверяйте наличие правильность классов; классы должны быть короткими, насколько это возможно, но настолько длинными, насколько это необходимо. Убедитесь, что абстракции имеют очень общие классы (например `.ui-list`, `.media`) для возможного переиспользования. Расширения абстракций должны иметь гораздо более конкретное классы (например `.user-avatar-link`). Не беспокойтесь о длинных классах; gzip выполнит свою работу потрясающе хорошо.
 
 ### Классы в HTML
 
-In a bid to make things easier to read, separate classes is your HTML with two
-(2) spaces, thus:
+Для большей читаемости разделяйте классы в разметке двумя (2) пробелами:
 
     <div class="foo--bar  bar__baz">
 
-This increased whitespace should hopefully allow for easier spotting and reading
-of multiple classes.
+Увеличенные отступы между классами позволяют легко вычленять отдельные классы.
 
 ### Джаваскрипт классы
 
-**Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
-to a styling class means that we can never have one without the other.
+**Никогда не используйте обычные CSS классы для привязывания JavaScript логики.** Связывание логики скриптов с оформлением ведёт к тому, что мы не сможем использовать одно без другого.
 
-If you need to bind to some markup use a JS specific CSS class. This is simply a
-class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
-that we can attach both JS and CSS to classes in our markup but there will never
-be any troublesome overlap.
+Если вам требуется привязать к вёрстке какую-то логику используйте специальный JS класс — обычный класс, дополненный префиксом `.js-`, например `.js-toggle`, `.js-drag-and-drop`. Данный приём позволяет добавлять JS и CSS классы, без создания самому себе проблем в будущем.
 
     <th class="is-sortable  js-is-sortable">
     </th>
 
-The above markup holds two classes; one to which you can attach some styling for
-sortable table columns and another which allows you to add the sorting
-functionality.
+Приведенная в пример разметка имеет два класса; один предназначен для оформления сортируемых табличных колонок и другой для того, чтобы вы могли добавить возможность сортировки.
 
 ## Комментарии
 
