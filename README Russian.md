@@ -49,30 +49,21 @@
 
 ## Анатомия CSS документа
 
-No matter the document, we must always try and keep a common formatting. This
-means consistent commenting, consistent syntax and consistent naming.
+Мы всегда должны стараться сохранять принятое форматирование. Это означает согласованные комментарии, синтаксис и соглашение об именовании.
 
 ### Общие моменты
 
-Limit your stylesheets to a maximum 80 character width where possible.
-Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
-nothing we can do about that.
+Ограничьте строки 80 символами, где это только возможно. Исключениями могут быть синтаксис градиентов и ссылки в комментариях. Это нормально, мы ничего не можем с этим сделать.
 
-I prefer four (4) space indents over tabs and we write multi-line CSS.
+Я предпочитаю отступы в четыре пробела и мы пишем многострочный CSS.
 
 ### Один файл vs. много файлов
 
-Some people prefer to work with single, large files. This is fine, and by
-sticking to the following guidelines you’ll encounter no problems. Since moving
-to Sass I have started sharding my stylesheets out into lots of tiny includes.
-This too is fine… Whichever method you choose, the following rules and
-guidelines apply. The only notable difference is with regards our table of
-contents and our section titles. Read on for further explanation…
+Некоторые предпочитают работать с одним большим файлом. Это хорошо и применяя данное руководство у вас не будет проблем. Начав использовать Sass, я начал разбивать мои стили на множество маленьких, подключаемых через `include`(TODO: проверить команду инклуда в SASS). Это тоже хорошо… Правила и рекомендации, приведённые ниже применимы к обоим способам. Единственное замечание относится к «Оглавлению» и «Заголовкам секций».(TODO: проверить соотносятся ли эти термины со структурой документа). Продолжайте читать, чтобы узнать подробности.
 
 ### Оглавление
 
-At the top of stylesheets, I maintain a table of contents which will detail the
-sections contained in the document, for example:
+В начале CSS файла я храню таблицу содержимого, которая уточняет какие секции содержатся в этом файле, например:
 
     /*------------------------------------*\
         $CONTENTS
@@ -83,21 +74,19 @@ sections contained in the document, for example:
      * FONT-FACE...........Import brand font files
      */
 
-This will tell the next developer(s) exactly what they can expect to find in
-this file. Each item in the table of contents maps directly to a section title.
+Оглавление подскажет следующему разработчику, что ему можно ожидать в этом файле. Каждый пункт оглавления совпадает с названием секции. (TODO: ‘map’ перевод)
 
-If you are working in one big stylesheet, the corresponding section will also be
-in that file. If you are working across multiple files then each item in the
-table of contents will map to an include which pulls that section in.
+Если вы работаете с одним большим файлом стилей, то секция попавшая в оглавление также находится в этом файле. Если вы работаете со стилями разнесёнными в несколько файлов, то каждый пункт оглавления адресует к команде подключения файла с этой секцией.
 
-### Section titles
+### Названия секций
 
-The table of contents would be of no use unless it had corresponding section
-titles. Denote a section thus:
+Оглавление будет бесполезно пока не будет соотноситься с названими секций. Оформляйте секцию таким способом:
 
     /*------------------------------------*\
         $RESET
     \*------------------------------------*/
+
+Знак `$` является префиксно дополняет название секции, позволяя искать по файлу паттерн `$[НАЗВАНИЕ-СЕКЦИИ]` и тем самым поиск ограничивается только по названиям секций
 
 The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
 for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
