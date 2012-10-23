@@ -129,23 +129,23 @@ For further reading I cannot recommend Jonathan Snook’s
 
 ## Анатомия CSS правила
 
-    [selector]{
-        [property]:[value];
-        [<- Declaration ->]
+    [Селектор] {
+        [Свойство]:[Значение]
+        [<-   Объявление  ->] (TODO: DECLARATION)
     }    
 
-I have a number of standards when structuring our rulesets.
+Я руководствуюсь несколькими правилами при написании правила.
 
-* Use hyphen delimited class names (except for BEM notation,
-  [see below](#naming-conventions))
-* 4 space indented
-* Multi-line
-* Declarations in relevance (**not** alphabetical) order
-* Indent vendor prefixed declarations so that their values are aligned
-* Indent our rulesets to mirror the DOM
-* Always include the final semi-colon in a ruleset
+* Тире как разделитель (Исключая БЭМ нотацию,
+  [смотрите ниже](#cоглашения-об-именовании))
+* Отступ в 4 пробела
+* Многострочность
+* Свойства сортируются в порядке релевантности (**не** в алфавитном)
+* Выравнивайте свойства с вендорными префиксами так, чтобы их значения были друг под другом.
+* Используйте отступы в стилях, чтобы отразить структуру HTML.
+* Всегда заканчивайте объявление знаком точки с запятой
 
-A brief example:
+И сразу пример:
 
     .widget{
         padding:10px;
@@ -165,16 +165,11 @@ A brief example:
             padding:0.25em;
         }
 
-Here we can see that `.widget-heading` must be a child of `.widget` as we have
-indented the `.widget-heading` ruleset one level deeper than `.widget`. This is
-useful information to developers that can now be gleaned just by a glance at the
-indentation of our rulesets.
+Наглядно видно, что `.widget-heading` является дочерним элементом `.widget`, так как мы `.widget-heading` имеет дополнительный отступ относительное селектора `.widget`. Эта полезное информация позволяет разработчикам, которые теперь знают структуру DOM дерева просто взглянув на отступы в файле стилей.
 
-We can also see that `.widget-heading`’s declarations are ordered by their
-relevance; `.widget-heading` must be a textual element so we begin with our
-text rules, followed by everything else.
+Также мы видим, что объявления селектора `.widget-heading` отсортированы в порядке релевантности; `.widget-heading` вероятнее всего текстовый элемент, поэтому мы начинаем правило со типографских свойств, за которыми уже следуют все остальные.
 
-One exception to our multi-line rule might be in cases of the following:
+Единственное исключение в многосточном CSS может быть в таком случае:
 
     .t10    { width:10% }
     .t20    { width:20% }
@@ -190,9 +185,8 @@ One exception to our multi-line rule might be in cases of the following:
     .t80    { width:80% }
     .t90    { width:90% }
 
-In this example (from [inuit.css’s table grid system](
-https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
-it makes more sense to single-line our CSS.
+В этом примере (из [сеточной системы inuit.css](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
+гораздо больше смысла использовать однострочные правила.
 
 ## Соглашения об именовании
 
