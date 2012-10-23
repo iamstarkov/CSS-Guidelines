@@ -18,7 +18,7 @@
   * [Один файл vs. много файлов](#один-файл-vs-много-файлов)
   * [Оглавление](#оглавление)
   * [Названия секций](#section-titles)
-* [Порядок стилей](#порядок-стилей)
+* [Организация правил](#организация-правил)
 * [Анатомия CSS правила](#анатомия-css-правила)
 * [Соглашения об именовании](#соглашения-об-именовании)
   * [Джаваскрипт классы](#джаваскрипт-классы)
@@ -109,26 +109,23 @@
 
 При работе с несколькими, подключаемыми файлами стилей, начинайте каждый файл с названия секции и в этом случае нет необходимости в пустых строках.
 
-## Порядок стилей
+## Организация правил
 
-Try and write stylesheets in specificity order. This ensures that you take full
-advantage of inheritance and CSS’ first <i>C</i>; the cascade.
+Возьмите за правило писать стили в порядке специфичности. Это обеспечит гарантию того, что вы используете все преимущества вложенности и каскада.
 
-A well ordered stylesheet will be ordered something like this:
+Порядок правильно организованного файла стилей похож на это:
 
-1. **Reset** – ground zero.
-2. **Elements** – unclassed `h1`, unclassed `ul` etc.
-3. **Objects and abstractions** — generic, underlying design patterns.
-4. **Components** – full components constructed from objects and their
-   extensions.
-5. **Style trumps** – error states etc.
+1. **Reset** – Платформа.
+2. **Элементы** – `h1`, `ul` и другие общие селекторы.
+3. **Объекты и абстракции** — Общие конструкции без дизайна.
+3. **Объекты и абстракции** — generic, underlying design patterns.
+4. **Компоненты** – компоненты построенные на объектах и их расширениях.
+5. **Полезные стили** – состояния ошибок и другое.
 
-This means that—as you go down the document—each section builds upon and
-inherits sensibly from the previous one(s). There should be less undoing of
-styles, less specificity problems and all-round better architected stylesheets.
+Такая структура означает, что секция написанная ниже строится и наследует правила описанные в предыдущих секциях. Это приведёт в к меньшему количеству проблем специфичности и отменяющих переопределений, а также к более качественной CSS архитектуре.
 
 For further reading I cannot recommend Jonathan Snook’s
-[SMACSS](http://smacss.com) highly enough.
+[SMACSS](http://smacss.com) highly enough. (TODO: to translate)
 
 ## Анатомия CSS правила
 
