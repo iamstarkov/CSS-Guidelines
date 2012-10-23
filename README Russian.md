@@ -86,13 +86,9 @@
         $RESET
     \*------------------------------------*/
 
-Знак `$` является префиксно дополняет название секции, позволяя искать по файлу паттерн `$[НАЗВАНИЕ-СЕКЦИИ]` и тем самым поиск ограничивается только по названиям секций
+Знак `$` является префиксно дополняет название секции, позволяя искать по файлу паттерн `$[НАЗВАНИЕ-СЕКЦИИ]` и тем самым **поиск ограничивается только по названиям секций**.
 
-The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
-for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
-
-If you are working in one large stylesheet, you leave five (5) carriage returns
-between each section, thus:
+Работая с большим файлом стилей, оставляейте отступ в пять строк между секциями
 
     /*------------------------------------*\
         $RESET
@@ -109,11 +105,9 @@ between each section, thus:
         $FONT-FACE
     \*------------------------------------*/
 
-This large chunk of whitespace is quickly noticeable when scrolling quickly
-through larger files.
+Этот участок пустого пространство легко и быстро бросается в глаза при пролистывании большого файла.
 
-If you are working across multiple, included stylesheets, start each of those
-files with a section title and there is no need for any carriage returns.
+При работе с несколькими, подключаемыми файлами стилей, начинайте каждый файл с названия секции и в этом случае нет необходимости в пустых строках.
 
 ## Порядок стилей
 
