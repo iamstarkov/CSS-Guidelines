@@ -450,34 +450,17 @@ them in CSS _ever_.
 
 ## Ключевой элемент селектора
 
-Instead of using selectors to drill down the DOM to an element, it is often best
-to put a class on the element you explicitly want to style. Let’s take a
-specific example with a selector like `.header ul{}`…
+Вместо использования селекторов спускающихся по всему DOM-дереву, чаще удобнее добавить требуемому элементу класс. Давайте рассмотрим конкретную ситуацию на примере `.header ul{}`…
 
-Let’s imagine that `ul` is indeed the main navigation for our website. It lives
-in the header as you might expect and is currently the only `ul` in there;
-`.header ul{}` will work, but it’s not ideal or advisable. It’s not very future
-proof and certainly not explicit enough. As soon as we add another `ul` to that
-header it will adopt the styling of our main nav and the the chances are it
-won’t want to. This means we either have to refactor a lot of code _or_ undo a
-lot of styling on subsequent `ul`s in that `.header` to remove the effects of
-the far reaching selector.
+Давайте представим, что `ul` действительно главная навигация на вашем сайте. Этот элемент находится в шапке сайта, как вы и ожидаете, и при этом не повторяется; `.header ul{}` будет работать, но это не идеальная и (TODO: advisable) ситуация. Этот селектор недальновиден и недостаточно точен. Проблема станет очевидна так скоро, как вы добавите ещё один `ul` в шапку сайта — новый элемент унаследует на себя все стили нашего главного меню и шансы, что мы так и задумали весьма невелики. Это приведёт к вынужденному рефакторингу большого количества кода *или* отмене большинства стилей для второго `ul`, чтобы уничтожить последствия недостаточно специфичного селектора.
 
-Your selector’s intent must match that of your reason for styling something;
-ask yourself **‘am I selecting this because it’s a `ul` inside of `.header` or
-because it is my site’s main nav?’**. The answer to this will determine your
-selector.
+Ключевой элемент селектора должен отражать причину своего возникновения; спросите себя **«Я пишу этот селектор именно, потому что `ul` вложен в `.header` или из-за того, что этот элемент — это главное меню на моём сайте?»**. Ответ опреляет правильный селектор.
 
-Make sure your key selector is never an element/type selector or
-object/abstraction class. You never really want to see selectors like
-`.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
+Всегда проверяйте, что ключевые элементы селектора не являются простыми селектороми тега или селекторами объекта/компонента/абстракции. Вы никогда не должны писать селекторы похожие на `.sidebar ul{}` или `.footer .media{}` в вашем файле стилей для темизации.
 
-Be explicit; target the element you want to affect, not its parent. Never assume
-that markup won’t change. **Write selectors that target what you want, not what
-happens to be there already.**
+Будьте точны, конкретны; указывайте именно тот элемент, который вам нужен, не его родитель. Никогда не предполагайте, что разметка будет неизменной. **Пишите селекторы, указывающие на желаемые элементы, а не на те элементы, что уже оказались в разметке.**
 
-For a full write up please see my article
-[Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+Для полного объяснения прочитайте мою статью [Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
 
 ## `!important`
 
