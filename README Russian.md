@@ -464,36 +464,21 @@ them in CSS _ever_.
 
 ## `!important`
 
-It is okay to use `!important` on helper classes only. To add `!important`
-preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
-**always** want this rule to take precedence.
+Допустимо использовать `!important` только на вспомогательных классах. Превентивно добавлять `!important` удобно и полезно, например если вы знаете, что селектор `.error { color: red !important; }` всегда должен нуждаетсяв наибольшем приоритете.
 
-Using `!important` reactively, e.g. to get yourself out of nasty specificity
-situations, is not advised. Rework your CSS and try to combat these issues by
-refactoring your selectors. Keeping your selectors short and avoiding IDs will
-help out here massively.
+Не приветствуется использование `!important` для исправления ошибок, например, чтобы помочь выбраться себе из ситуации с запутанной специфичностью. Переработайте ваш CSS и старайтесь избегать этих проблем рефакторингом ваших селекторов. Сохраняйте ваши селекторы короткими, откажитесь от ID — и ваша жизнь станет проще.
 
 ## Магические числа и абсолютные значения
 
-A magic number is a number which is used because ‘it just works’. These are bad
-because they rarely work for any real reason and are not usually very
-futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
+Магическое число — число используемое лишь потому, что «это просто работает». Это порочная практика, так как очень редко она работает по какой-либо реальной причине и обычно достаточно недальновидна, негибка и причина самого числа вероятнее всего забудется. Магические числа устраняют симптомы, но не никак не влиют на проблему.
 
-For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown
-to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
-works here because in this particular scenario the `.dropdown-nav` happens to be
-37px tall.
+Например, использование правила `.dropdown-nav li:hover ul { top: 37px; }` для сдвига выпадающего пункта меню вниз при наведении на родителя `li` не принесёт ничего хорошего, так как 37px магическое число. 37px работает только потому, что в этом конретном сценарии (конкретный сайт в определённое время) меню оказалось высотой в 37px.
 
-Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
-matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
-the top.
+Вместо этого мы должны использовать `.dropdown-nav li:hover ul { top: 100%; }`, что означает без разницы какой высоты будет `dropdown-nav` меню, выпадающий пункт меню всегда будет сдвинут на 100% от верхней границы родителя.
 
-Every time you hard code a number think twice; if you can avoid it by using
-keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’)
-or&mdash;even better&mdash;no measurements at all then you probably should.
+Каждый раз, когда вы жестко задаёте число подумайте дважды; если вы можете избежать этого, используя ключевые слова или синонимы (например, `top: 100%` — сдвинуть на 100% от верха) или — даже лучше — не используя никаких элементов измерений, то вы должны избежать использования жестко заданного числа.
 
-Every hard-coded measurement you set is a commitment you might not necessarily
-want to keep.
+Каждое установленное вами числовое значение, скорее всего было необязательным.
 
 ## Conditional stylesheets
 
