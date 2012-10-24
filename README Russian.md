@@ -488,16 +488,11 @@ them in CSS _ever_.
 
 ## Отладка
 
-If you run into a CSS problem **take code away before you start adding more** in
-a bid to fix it. The problem exists in CSS that is already written, more CSS
-isn’t the right answer!
+Если вы столкнулись с проблемой в CSS, то **удаляйте куски кода, до того как начать добавлять правила ещё** в попытке решить проблему. Проблема кроется в уже написанном CSS, написать ещё больше стилей — не самое верное решение!
 
-Delete chunks of markup and CSS until your problem goes away, then you can
-determine which part of the code the problem lies in.
+Удаляйте куски разметки и стилей, пока проблема не исчезнет, затем определите в какую часть кода закралась проблема.
 
-It can be tempting to put an `overflow:hidden;` on something to hide the effects
-of a layout quirk, but overflow was probably never the problem; **fix the
-problem, not its symptoms.**
+Это бывает достаточно удобно добавить `overflow: hidden;` на нужный элемент, чтобы избавиться от результатов кривой вёрстки, но `overflow` сам по себе никогда не был проблемой; **Исправляйте проблему, а не симптомы.**
 
 ## Препроцессоры
 
