@@ -496,17 +496,14 @@ them in CSS _ever_.
 
 ## Препроцессоры
 
-Sass is my preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
-more powerful but avoid nesting like the plague! Nest only when it would
-actually be necessary in vanilla CSS, e.g.
+Sass — мой выбор среди препроцессоров. **Используйте его с умом** (TODO: Use Sass to make your CSS more powerful but avoid nesting like the plague! Nest only when it would actually be necessary in vanilla CSS, e.g.)
 
     .header{}
     .header .site-nav{}
     .header .site-nav li{}
     .header .site-nav li a{}
 
-Would be wholly unnecessary in normal CSS, so the following would be **bad**
-Sass:
+Что полностью избыточно в обычном CSS, следовательно следущий Sass код достаточно плох:
 
     .header{
         .site-nav{
@@ -516,7 +513,7 @@ Sass:
         }
     }
 
-If you were to Sass this up you’d write it as:
+Иcпользуя Sass пишите это так:
 
     .header{}
     .site-nav{
