@@ -24,9 +24,9 @@
   * [Джаваскрипт классы](#джаваскрипт-классы)
 * [Комментарии](#комментарии)
   * [Комментарии на стероидах](#комментарии-на-стероидах)
-    * [Смешанные селекторы](#quasi-qualified-selectors)
+    * [Квази-селекторы](#квази-селекторы)
     * [Теги в коде](#теги-в-коде)
-    * [Ссылка на расширяемый компонент](#cсылка-на-расширяемый-компонент)
+    * [Ссылки между компонентом и его расширением](#ссылки-между-компонентом-и-его-расширением)
 * [Напиcание CSS](#напиcание-css)
 * [Создание новых компонентов](#создание-новых-компонентов)
 * [OOCSS](#oocss)
@@ -234,7 +234,7 @@ For further reading I cannot recommend Jonathan Snook’s
 
 **Никогда не используйте обычные CSS классы для привязывания JavaScript логики.** Связывание логики скриптов с оформлением ведёт к тому, что мы не сможем использовать одно без другого.
 
-Если вам требуется привязать к вёрстке какую-то логику используйте специальный JS класс — обычный класс, дополненный префиксом `.js-`, например `.js-toggle`, `.js-drag-and-drop`. Данный приём позволяет добавлять JS и CSS классы, без создания самому себе проблем в будущем.
+Если вам требуется привязать к вёрстке какую-то логику используйте специальный JS класс — обычный класс, дополненный префиксом `.js-`, например `.js-toggle`, `.js-drag-and-drop`. Данный приём позволяет добавлять JS и CSS классы, без создания самому себе проблем в будущем, а также разделяет логику поведедения и оформление страницы друг от друга.
 
     <th class="is-sortable  js-is-sortable">
     </th>
@@ -243,72 +243,59 @@ For further reading I cannot recommend Jonathan Snook’s
 
 ## Комментарии
 
-I use a docBlock-esque commenting style which I limit to 80 lines in length:
+Я использую комментарии в стиле docBlock, которые я ограничиваю в 80 символов:
 
     /**
-     * This is a docBlock style comment
+     * Пример комментария в стиле docBlock
+     *
+     * Более длинное описание комментария, описывающего код в больших
+     * подробностях. Комментарии ограничиваются в 80 символов.
      * 
-     * This is a longer description of the comment, describing the code in more
-     * detail. We limit these lines to a maximum of 80 characters in length.
-     * 
-     * We can have markup in the comments, and are encouraged to do so:
+     * Можно вставлять разметку в комментарии. Делается это так:
      * 
        <div class=foo>
            <p>Lorem</p>
        </div>
      * 
-     * We do not prefix lines of code with an asterisk as to do so would inhibit
-     * copy and paste.
+     * Разметка префиксно не дополняется звездочками, чтобы оставить возможность
+     * легкого копипаста.
+     * 
      */
 
-You should document and comment our code as much as you possibly can, what may
-seem or feel transparent and self explanatory to you may not be to another dev.
-Write a chunk of code then write about it.
+Вы должны документировать и комментирвоать так много, насколько вы можете это делать; всё, что кажется вам прозрачным и само-объясняемым может не быть таковым для другого разработчика. Пишите кусок кода и сразу после этого объясняйте его.
 
 ### Комментарии на стероидах
 
-There are a number of more advanced techniques you can employ with regards
-comments, namely:
+Существуют несколько продвинутых техник, связанных с комментариями:
 
-* Quasi-qualified selectors
-* Tagging code
-* Object/extension pointers
+* Квази-селекторы
+* Теги в коде
+* Ссылка на расширяемый компонент
 
-#### Смешанные селекторы
+#### Квази-селекторы
 
-You should never qualify your selectors; that is to say, we should never write
-`ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
-performance, inhibits the potential for reusing a class on a different type of
-element and it increases the selector’s specificity. These are all things that
-should be avoided at all costs.
+Вы никогда не должны перегружать селектор; скажем так, вы никогда не должны писать `ul.nav{}`, если вы можете написать просто `.nav{}`. Перегрузка селекторов приводит к уменьшению производительности селекторов (увеличению времени рендеринга страницы), исключает возможность потенциального переиспользования селектора для элемента другого типа и увеличивает специфичность селектора. Это все те вещи, которые должны избегаться при любых условиях.
 
-However, sometimes it is useful to communicate to the next developer(s) where
-you intend a class to be used. Let’s take `.product-page` for example; this
-class sounds as though it would be used on a high-level container, perhaps the
-`html` or `body` element, but with `.product-page` alone it is impossible to
-tell.
+Иногда бывает полезно сообщить следующему разработчику, в каком контексте вы предполагаете должен использовать селектор. Давайте рассмотрим `.product-page`; Этот класс выглядит так, как будто должен использоваться на корневых контейнерах, таких как `html` и `body`, но селектор `.product-page` не имеет возможности сказать на какой именно контейнер он был использован.
 
-By quasi-qualifying this selector (i.e. commenting out the leading type
-selector) we can communicate where we wish to have this class applied, thus:
+Используя смешанные селекторы (например, комментирование первого простого селектора по типу), мы можем сообщить на какой контейнер следует использовать этот класс:
 
     /*html*/.product-page{}
 
-We can now see exactly where to apply this class but with none of the
-specificity or non-reusability drawbacks.
+В этом примере мы чётко видим на какой элемент применён данный класс, без проблем со специфичносью и переиспользованием этого кода;
 
-Other examples might be:
+Другие примеры могут быть такими:
 
     /*ol*/.breadcrumb{}
     /*p*/.intro{}
     /*ul*/.image-thumbs{}
 
-Here we can see where we intend each of these classes to be applied without
-actually ever impacting the specificity of the selectors.
+
+Мы можем увидеть к какому типу элемента применён класс и также недопустили увеличения специфичности селектора.
 
 #### Теги в коде
 
-If you write a new component then leave some tags pertaining to its function in
-a comment above it, for example:
+При написаниии нового компонента, оставляйте теги основнные на функиональности компонента:
 
     /**
      * ^navigation ^lists
@@ -320,35 +307,32 @@ a comment above it, for example:
      */
     .matrix{}
 
-These tags allow other developers to find snippets of code by searching for
-function; if a developer needs to work with lists they can run a find for
-`^lists` and find the `.nav` and `.matrix` objects (and possibly more).
+Теги позволяют разаработчикам находить сниппеты поиском по названию тега. Если 
+разработчику понадобится поработать со списками, он может начать искать `^color` и найдёт объекты `.nav` и `.matrix`
 
-#### Ссылка на расширяемый компонент
+#### Ссылки между компонентом и его расширением
 
-When working in an object oriented manner you will often have two chunks of CSS
-(one being the skeleton (the object) and the other being the skin (the
-extension)) that are very closely related, but that live in very different
-places. In order to establish a concrete link between the object and its
-extension with use <i>object/extension pointers</i>. These are simply comments
-which work thus:
+Используя методы OOCSS, вы часто будете иметь два участка кода (один — скелет приложения и второй — темизация) и при этом расширение (TODO: extension в терминах ООЦСС) сильно связано с классом-родителем; но часто бывает так, что они находятся в разных файлах. Для установления чёткой связи между объектом и его расширением мы применяем <i>ссылки между компонентом и его расширением</i>. Данные ссылки являются просто комментариями.
 
-In your base stylesheet:
+В вашей основном файле стилей:
+
+Эти теги позволят другим разработчикам искать код, используя сниппеты как этот:
 
     /**
      * Extend `.foo` in theme.css
+     * (Дополнен классом `.foo` в theme.css) (TODO: translate)
      */
-     .foo{}
+     .foo {}
 
 In your theme stylesheet:
 
     /**
      * Extends `.foo` in base.css
+     * (Дополняет класс `.foo` из base.css)
      */
      .bar{}
 
-Here we have established a concrete relationship between two very separate
-pieces of code.
+Тем самым мы получили устойчивую связь между двумя связаными логически, но физически разбитыми на части кусками кода.
 
 ---
 
