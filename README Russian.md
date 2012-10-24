@@ -366,24 +366,13 @@ In your theme stylesheet:
 
 ## Разметка
 
-All components you build should be left totally free of widths; they should
-always remain fluid and their widths should be governed by a parent/grid system.
+Все компоненты должны быть полностью независимы от ширины; ваши компоненты должны оставаться резиновыми и их ширина должна контролироваться системой модульных сеток.
 
-Heights should **never** be be applied to elements. Heights should only be 
-applied to things which had dimensions _before_ they entered the site (i.e.
-images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything.
-You can often achieve the desired effect with `line-height` which is far more
-flexible.
+Высота **никогда** не должна назначаться элементам. Высота применяется только на сущности, имевшие размеры *до того*, как попали на сайт (например, картинки и спрайты). Никогда не устанавливайте высоту на `p`, `ul`, `div`, вообще что угодно. Вы можете добить желаемого эффекта с помощью гораздо более гибкого `line-height`.
 
-Grid systems should be thought of as shelves. They contain content but are not
-content in themselves. You put up your shelves then fill them with your stuff.
-By setting up our grids separately to our components you can move components
-around a lot more easily than if they had dimensions applied to them; this makes
-our front-ends a lot more adaptable and quick to work with.
+Систему модульных сеток следует рассматривать, как структуру сайта. Вы создаёте структуру сайта, а затем наполняете её информацией. Отделяя систему модульных сеток от созданных нами компонентов, вы можете менять расположение компонентов на сайте намного проще, если бы ширина и высота были бы установлены прямо на компоненты; это делает наш фронтэнд более гибким и быстрым в работе.
 
-You should never apply any styles to a grid item, they are for layout purposes
-only. Apply styling to content _inside_ a grid item. Never, under _any_
-circumstances, apply box-model properties to a grid item.
+Вы никогда не должны применять никаких стилей на ячейку сетки, так как они служат только целям разметки. Применяйте стили только на *содержание ячейки*. Никогда, *ни при каких обстоятельствах* не применяйте свойства меняющие поведение `box-model` к ячейкам сетки.
 
 ## Единицы измерения
 
