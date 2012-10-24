@@ -372,30 +372,23 @@ In your theme stylesheet:
 
 Систему модульных сеток следует рассматривать, как структуру сайта. Вы создаёте структуру сайта, а затем наполняете её информацией. Отделяя систему модульных сеток от созданных нами компонентов, вы можете менять расположение компонентов на сайте намного проще, если бы ширина и высота были бы установлены прямо на компоненты; это делает наш фронтэнд более гибким и быстрым в работе.
 
-Вы никогда не должны применять никаких стилей на ячейку сетки, так как они служат только целям разметки. Применяйте стили только на *содержание ячейки*. Никогда, *ни при каких обстоятельствах* не применяйте свойства меняющие поведение `box-model` к ячейкам сетки.
+Вы никогда не должны применять никаких стилей на ячейку сетки, так как они лслужат только целям разметки. Применяйте стили только на *содержание ячейки*. Никогда, *ни при каких обстоятельствах* не применяйте свойства меняющие поведение `box-model` к ячейкам сетки.
 
 ## Единицы измерения
 
-I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
-and nothing at all.
+Мы используем различные методы для задания размеров интерфейса: проценты, пиксели, `ems`, `rems` или вообще не задаем единицы измерения.
 
-Grid systems should, ideally, be set in percentages. Because I use grid systems
-to govern widths of columns and pages, I can leave components totally free of
-any dimensions (as discussed above).
+Ячейки сетки в идеале должны иметь размеры в процентах. Используя сетку для управления колонками на страницах, я оставляю компоненты полностью свободными от размеров (как я рассказывал ранее).
 
-Font sizes I set in rems with a pixel fallback. This gives the accessibility
-benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
-work out a rem and pixel fallback for you (assuming you set your base font
-size in a variable somewhere):
+Размеры шрифтов я устанавливаю в `rem` c запасным решением с использованием пикселей. Этот метод предоставляет доступность контента как с `em` и уверенность при использовании пикселей. 
+Простой Sass миксин для одновременной работы с пикселями и `rem` (вы должны определить переменную `$base-font-size` ранее в стилях):
 
     @mixin font-size($font-size){
         font-size:$font-size +px;
         font-size:$font-size / $base-font-size +rem;
     }
 
-I only use pixels for items whose dimensions were defined before the came into
-the site. This includes things like images and sprites whose dimensions are
-inherently set absolutely in pixels.
+Я использую пиксели только для элементов, имеющих размеры и вне контекста сайта— в основном, это картинки и спрайты.
 
 ### Типографские единицы измерения
 
