@@ -388,14 +388,12 @@ In your theme stylesheet:
         font-size:$font-size / $base-font-size +rem;
     }
 
-Я использую пиксели только для элементов, имеющих размеры и вне контекста сайта— в основном, это картинки и спрайты.
+Я использую пиксели только для элементов, имеющих размеры и вне контекста сайта — в основном, это картинки и спрайты.
 
 ### Типографские единицы измерения
 
-I define a series of classes akin to a grid system for sizing fonts. These
-classes can be used to style type in a double stranded heading hierarchy. For a
-full explanation of how this works please refer to my article
-[Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
+Я составил список классов (похожих на модульную сетку) для задания размера текста. Эти классы могут быть использованы (TODO: These
+classes can be used to style type in a double stranded heading hierarchy.) для стилизации текста. Моя статья «[Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)» расскажет вам как это работает.
 
 ## Cокращенная запись
 
