@@ -338,23 +338,19 @@ In your theme stylesheet:
 
 ## Напиcание CSS
 
-The previous section dealt with how we structure and form our CSS; they were
-very quantifiable rules. The next section is a little more theoretical and deals
-with our attitude and approach.
+Предыдущая часть рассказывает какую соблюдать структуру и как писать наш CSS.
+
+Предыдущая часть рассказывает как структурировать и формировать наш CSS; здесь существуют более-менее чёткие правила. Следущая глава будет немного более теоретической и повествует про способ мышления и подход. (TODO: attitude and approach)
 
 ## Создание новых компонентов
 
-When building a new component write markup **before** CSS. This means you can
-visually see which CSS properties are naturally inherited and thus avoid
-reapplying redundant styles.
+При создании нового компонента пишите разметку **до того**, как напишите хоть одну строчку CSS. Это позволяет увидеть какие свойства наследовались и избежать повторного применения избыточных стилей.
 
-By writing markup first you can focus on data, content and semantics and then
-apply only the relevant classes and CSS _afterwards_.
+Если вы будете писать сначала разметку, то вы сможете сфокусироваться на информации, контенте и семантике и **только после** этого применить необходимые стили.
 
 ## OOCSS
 
-I work in an OOCSS manner; I split components into structure (objects) and
-skin (extensions). As an **analogy** (note, not example) take the following:
+Я использую OOCSS подход; Я разделяю компоненты на структуру (объекты) и оформления (расширения). Как **аналогия** (не пример) можно рассмотреть следующий сниппет:
 
     .room{}
     
@@ -362,24 +358,11 @@ skin (extensions). As an **analogy** (note, not example) take the following:
     .room--bedroom{}
     .room--bathroom{}
 
-We have several types of room in a house, but they all share similar traits;
-they all have floors, ceilings, walls and doors. We can share this information
-in an abstracted `.room{}` class. However we have specific types of room that
-are different from the others; a kitchen might have a tiled floor and a bedroom
-might have carpets, a bathroom might not have a window but a bedroom most likely
-will, each room likely has different coloured walls. OOCSS teaches us to
-abstract the shared styles out into a base object and then _extend_ this
-information with more specific classes to add the unique treatment(s).
+Мы располагаем комнатами нескольких типов, но все комнаты имеют похожие свойства; В каждой комнате есть пол, потолок, стены и двери. Мы можем обобщить эту информацию в общем классе `.room{}`. Тем не менее у нас есть специальные отличающиеся друг от друга типы комнат; Кухня должна иметь плитку на полу, спальня — ковёр; В ванной не должно быть окна, а в спальне, напротив, должно. В каждой комнате скорее всего стены покрашены в свой цвет. OOCSS учит нас абстрагироть похожие свойства в базовый объект и в дальнейшем дополнять его с помощью расширяющих классов для добавления особенных (TODO: treatment)
 
-So, instead of building dozens of unique components, try and spot repeated
-design patterns across them all and abstract them out into reusable classes;
-build these skeletons as base ‘objects’ and then peg classes onto these to
-extend their styling for more unique circumstances.
+Вместо того, чтобы плодить множество уникальных компонентов, попытайтесь распознать повторяющиеся шаблоны дизайна и создать из них абстракции; cверстайте эти абстракции, а затем используйте уточняющие классы для расширения их внешнего оформления.
 
-If you have to build a new component split it into structure and skin; build the
-structure of the component using very generic classes so that we can reuse that
-construct and then use more specific classes to skin it up and add design
-treatments.
+Если вы вынуждены создать новый компонент, то разделите его на структуру и декоративное оформление; сверстайте структуру используя общие классы, тем самым давая возможность использования структуры компонента в других местах вашего проекта, и затем, используя более специфичные классы, оформите компонент в соответствии с требованиями дизайна.
 
 ## Разметка
 
