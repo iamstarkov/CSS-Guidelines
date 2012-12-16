@@ -1,5 +1,13 @@
 # General CSS notes, advice and guidelines
 
+---
+
+## Translations
+
+* [Russian/русский](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
+
+---
+
 In working on large, long running projects with dozens of developers, it is
 important that we all work in a unified way in order to, among other things:
 
@@ -25,6 +33,7 @@ writing and architecting CSS. Exciting, huh?
 * [Anatomy of rulesets](#anatomy-of-rulesets)
 * [Naming conventions](#naming-conventions)
   * [JS hooks](#js-hooks)
+  * [Internationalisation](#internationalisation)
 * [Comments](#comments)
   * [Comments on steroids](#comments-on-steroids)
     * [Quasi-qualified selectors](#quasi-qualified-selectors)
@@ -61,7 +70,7 @@ Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
 nothing we can do about that.
 
-I prefer four (4) space indents over tabs and we write multi-line CSS.
+I prefer four (4) space indents over tabs and write multi-line CSS.
 
 ### One file vs. many files
 
@@ -157,13 +166,13 @@ For further reading I cannot recommend Jonathan Snook’s
         [<- Declaration ->]
     }    
 
-I have a number of standards when structuring our rulesets.
+I have a number of standards when structuring rulesets.
 
 * Use hyphen delimited class names (except for BEM notation,
   [see below](#naming-conventions))
 * 4 space indented
 * Multi-line
-* Declarations in relevance (**not** alphabetical) order
+* Declarations in relevance (NOT alphabetical) order
 * Indent vendor prefixed declarations so that their values are aligned
 * Indent our rulesets to mirror the DOM
 * Always include the final semi-colon in a ruleset
@@ -299,9 +308,30 @@ The above markup holds two classes; one to which you can attach some styling for
 sortable table columns and another which allows you to add the sorting
 functionality.
 
+### Internationalisation
+
+Despite being a British developer—and spending all my life writing <i>colour</i>
+instead of <i>color</i>—I feel that, for the sake of consistency, it is better
+to always use US-English in CSS. CSS, as with most (if not all) other languages,
+is written in US-English, so to mix syntax like `color:red;` with classes like
+`.colour-picker{}` lacks consistency. I have previously suggested and advocated
+writing bilingual classes, for example:
+
+    .color-picker,
+    .colour-picker{
+    }
+
+However, having recently worked on a very large Sass project where there were
+dozens of colour variables (e.g. `$brand-color`, `$highlight-color` etc.),
+maintaining two versions of each variable soon became tiresome. It also means
+twice as much work with things like find and replace.
+
+In the interests of consistency, always name classes and variables in the locale
+of the language you are working with.
+
 ## Comments
 
-I use a docBlock-esque commenting style which I limit to 80 lines in length:
+I use a docBlock-esque commenting style which I limit to 80 characters in length:
 
     /**
      * This is a docBlock style comment
